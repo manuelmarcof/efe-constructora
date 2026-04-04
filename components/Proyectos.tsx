@@ -7,52 +7,61 @@ const projects = [
   {
     title: "Supermercado Central",
     category: "Comercial",
+    status: "Entregada",
     area: "2,500 m²",
     location: "Asunción, Paraguay",
   },
   {
     title: "Oficinas Corporativas Santa Teresa",
     category: "Comercial",
+    status: "Entregada",
     area: "1,800 m²",
     location: "Asunción, Paraguay",
   },
   {
     title: "Residencia Familiar Villa Morra",
     category: "Residencial",
+    status: "Entregada",
     area: "350 m²",
     location: "Asunción, Paraguay",
   },
   {
     title: "Centro Comercial del Este",
     category: "Comercial",
+    status: "En Ejecución",
     area: "5,000 m²",
     location: "Ciudad del Este, Paraguay",
   },
   {
     title: "Casa de Campo Areguá",
     category: "Residencial",
+    status: "Entregada",
     area: "280 m²",
     location: "Areguá, Paraguay",
   },
   {
-    title: "Departamentos Carmelitas",
+    title: "Torre Residencial Carmelitas",
     category: "Residencial",
-    area: "1,200 m²",
+    status: "En Ejecución",
+    area: "4,200 m²",
     location: "Asunción, Paraguay",
   },
 ];
 
-const filters = ["Todos", "Comercial", "Residencial"];
+const categoryFilters = ["Todos", "Comercial", "Residencial"];
+const statusFilters = ["Todos", "En Ejecución", "Entregada"];
 
 export default function Proyectos() {
-  const [activeFilter, setActiveFilter] = useState("Todos");
+  const [activeCategory, setActiveCategory] = useState("Todos");
+  const [activeStatus, setActiveStatus] = useState("Todos");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const filtered =
-    activeFilter === "Todos"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
+  const filtered = projects.filter((p) => {
+    const catMatch = activeCategory === "Todos" || p.category === activeCategory;
+    const statusMatch = activeStatus === "Todos" || p.status === activeStatus;
+    return catMatch && statusMatch;
+  });
 
   return (
     <section id="proyectos" className="py-32 px-6 lg:px-8">
@@ -75,21 +84,43 @@ export default function Proyectos() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 flex gap-4"
+          className="mt-12 flex flex-col sm:flex-row gap-6"
         >
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 text-sm tracking-wide transition-colors ${
-                activeFilter === filter
-                  ? "bg-foreground text-white"
-                  : "bg-surface text-muted hover:text-foreground"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+          {/* Category filters */}
+          <div className="flex gap-2">
+            <span className="text-xs tracking-[0.2em] uppercase text-muted self-center mr-2">Tipo:</span>
+            {categoryFilters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveCategory(filter)}
+                className={`px-4 py-2 text-sm tracking-wide transition-colors ${
+                  activeCategory === filter
+                    ? "bg-foreground text-white"
+                    : "bg-surface text-muted hover:text-foreground"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          {/* Status filters */}
+          <div className="flex gap-2">
+            <span className="text-xs tracking-[0.2em] uppercase text-muted self-center mr-2">Estado:</span>
+            {statusFilters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveStatus(filter)}
+                className={`px-4 py-2 text-sm tracking-wide transition-colors ${
+                  activeStatus === filter
+                    ? "bg-foreground text-white"
+                    : "bg-surface text-muted hover:text-foreground"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Project Grid */}
@@ -104,7 +135,7 @@ export default function Proyectos() {
               transition={{ duration: 0.4, delay: 0.05 * i }}
               className="group relative aspect-[4/3] bg-surface overflow-hidden cursor-pointer"
             >
-              {/* Placeholder gradient background */}
+              {/* Placeholder gradient background — replace with drone shots */}
               <div
                 className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                 style={{
@@ -128,15 +159,30 @@ export default function Proyectos() {
                 </div>
               </div>
 
-              {/* Always visible label */}
-              <div className="absolute top-4 left-4">
+              {/* Labels */}
+              <div className="absolute top-4 left-4 flex gap-2">
                 <span className="text-xs tracking-wide bg-white/90 px-3 py-1">
                   {project.category}
+                </span>
+                <span
+                  className={`text-xs tracking-wide px-3 py-1 ${
+                    project.status === "En Ejecución"
+                      ? "bg-amber-100 text-amber-800"
+                      : "bg-green-100 text-green-800"
+                  }`}
+                >
+                  {project.status}
                 </span>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {filtered.length === 0 && (
+          <p className="mt-12 text-center text-muted">
+            No hay proyectos que coincidan con los filtros seleccionados.
+          </p>
+        )}
       </div>
     </section>
   );
