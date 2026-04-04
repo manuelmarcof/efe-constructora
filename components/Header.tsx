@@ -37,8 +37,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-2">
-            <span className="text-2xl font-bold tracking-tight">efe</span>
-            <span className="text-xs tracking-[0.3em] uppercase text-muted hidden sm:block">
+            <span className={`text-2xl font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>efe</span>
+            <span className={`text-xs tracking-[0.3em] uppercase hidden sm:block transition-colors ${scrolled ? "text-muted" : "text-white/60"}`}>
               constructora
             </span>
           </a>
@@ -49,7 +49,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm tracking-wide text-muted hover:text-foreground transition-colors"
+                className={`text-sm tracking-wide transition-colors ${scrolled ? "text-muted hover:text-foreground" : "text-white/70 hover:text-white"}`}
               >
                 {link.label}
               </a>
@@ -75,19 +75,19 @@ export default function Header() {
             aria-label="Menú"
           >
             <span
-              className={`block w-6 h-0.5 bg-foreground transition-transform ${
-                isOpen ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-transform ${
+                scrolled ? "bg-foreground" : "bg-white"
+              } ${isOpen ? "rotate-45 translate-y-2" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-foreground transition-opacity ${
-                isOpen ? "opacity-0" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-opacity ${
+                scrolled ? "bg-foreground" : "bg-white"
+              } ${isOpen ? "opacity-0" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-foreground transition-transform ${
-                isOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-transform ${
+                scrolled ? "bg-foreground" : "bg-white"
+              } ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
