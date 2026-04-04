@@ -1,80 +1,50 @@
-"use client";
+'use client';
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const clientTypes = [
-  "Inversionistas de Real Estate",
-  "Sector Industrial",
-  "Desarrollos Premium",
-  "Retail & Supermercados",
-  "Sector Corporativo",
-  "Residencial Privado",
+  'Inversionistas de Real Estate',
+  'Sector Industrial',
+  'Desarrollos Premium',
+  'Retail & Supermercados',
+  'Oficinas Corporativas',
+  'Residencias de Alta Gama',
 ];
 
 export default function Clientes() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="clientes" className="py-32 px-6 lg:px-8 bg-surface">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+    <section className="py-20 md:py-28 bg-[#faf7f3]" ref={ref}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
         >
-          <p className="text-sm tracking-[0.4em] uppercase text-muted mb-4">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
             Nuestros Clientes
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-xl mx-auto">
-            Quiénes confían en nosotros
+          <h2 className="font-editorial text-[clamp(1.8rem,3vw,2.5rem)] text-[#1a1a1a] leading-[1.1] mb-12">
+            Trabajamos con quienes<br />
+            <span className="italic">construyen el futuro.</span>
           </h2>
-          <p className="mt-6 text-lg text-muted max-w-2xl mx-auto">
-            Trabajamos con los principales actores del mercado inmobiliario y
-            empresarial de Paraguay.
-          </p>
         </motion.div>
 
-        {/* Client type tags */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 flex flex-wrap justify-center gap-4"
-        >
+        <div className="flex flex-wrap gap-3">
           {clientTypes.map((type, i) => (
-            <motion.div
+            <motion.span
               key={type}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 * i }}
-              className="px-6 py-4 border border-border bg-white text-sm tracking-wide text-muted hover:text-foreground hover:border-foreground transition-colors"
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.08 * i }}
+              className="text-[13px] text-[#4a4a4a] border border-[#d4cdc4] px-5 py-2.5 hover:border-[#8b7355] hover:text-[#8b7355] transition-colors duration-300 cursor-default"
             >
               {type}
-            </motion.div>
+            </motion.span>
           ))}
-        </motion.div>
-
-        {/* Logo placeholder row */}
-        <div className="mt-20 border-t border-border pt-12">
-          <p className="text-center text-xs tracking-[0.3em] uppercase text-muted mb-10">
-            Empresas que han confiado en nosotros
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-12">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 * i }}
-                className="w-28 h-12 bg-neutral-100 rounded flex items-center justify-center"
-              >
-                <span className="text-xs text-neutral-400">Logo {i + 1}</span>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -1,188 +1,169 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
-const projects = [
+const proyectos = [
   {
-    title: "Supermercado Central",
-    category: "Comercial",
-    status: "Entregada",
-    area: "2,500 m²",
-    location: "Asunción, Paraguay",
+    title: 'Supermercado Central',
+    location: 'Asuncion, Paraguay',
+    category: 'Comercial',
+    status: 'Entregada',
+    area: '2.800 m\u00b2',
+    image: '/images/supermercado.png',
   },
   {
-    title: "Oficinas Corporativas Santa Teresa",
-    category: "Comercial",
-    status: "Entregada",
-    area: "1,800 m²",
-    location: "Asunción, Paraguay",
+    title: 'Torre Residencial Manora',
+    location: 'Barrio Manora, Asuncion',
+    category: 'Residencial',
+    status: 'En Ejecucion',
+    area: '12.000 m\u00b2',
+    image: '/images/torre-residencial.png',
   },
   {
-    title: "Residencia Familiar Villa Morra",
-    category: "Residencial",
-    status: "Entregada",
-    area: "350 m²",
-    location: "Asunción, Paraguay",
+    title: 'Lobby Corporativo',
+    location: 'Villa Morra, Asuncion',
+    category: 'Comercial',
+    status: 'Entregada',
+    area: '1.500 m\u00b2',
+    image: '/images/lobby-corporativo.png',
   },
   {
-    title: "Centro Comercial del Este",
-    category: "Comercial",
-    status: "En Ejecución",
-    area: "5,000 m²",
-    location: "Ciudad del Este, Paraguay",
+    title: 'Residencia Familiar',
+    location: 'Luque, Paraguay',
+    category: 'Residencial',
+    status: 'Entregada',
+    area: '450 m\u00b2',
+    image: '/images/casa-moderna.png',
   },
   {
-    title: "Casa de Campo Areguá",
-    category: "Residencial",
-    status: "Entregada",
-    area: "280 m²",
-    location: "Areguá, Paraguay",
+    title: 'Centro Comercial',
+    location: 'Ciudad del Este',
+    category: 'Comercial',
+    status: 'En Ejecucion',
+    area: '5.200 m\u00b2',
+    image: '/images/comercial-centro.png',
   },
   {
-    title: "Torre Residencial Carmelitas",
-    category: "Residencial",
-    status: "En Ejecución",
-    area: "4,200 m²",
-    location: "Asunción, Paraguay",
+    title: 'Oficinas Efe',
+    location: 'Asuncion, Paraguay',
+    category: 'Comercial',
+    status: 'Entregada',
+    area: '600 m\u00b2',
+    image: '/images/oficina-efe.png',
   },
 ];
 
-const categoryFilters = ["Todos", "Comercial", "Residencial"];
-const statusFilters = ["Todos", "En Ejecución", "Entregada"];
+type FilterType = 'Todos' | 'Comercial' | 'Residencial';
+type StatusType = 'Todos' | 'En Ejecucion' | 'Entregada';
 
 export default function Proyectos() {
-  const [activeCategory, setActiveCategory] = useState("Todos");
-  const [activeStatus, setActiveStatus] = useState("Todos");
+  const [filter, setFilter] = useState<FilterType>('Todos');
+  const [status, setStatus] = useState<StatusType>('Todos');
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  const filtered = projects.filter((p) => {
-    const catMatch = activeCategory === "Todos" || p.category === activeCategory;
-    const statusMatch = activeStatus === "Todos" || p.status === activeStatus;
+  const filtered = proyectos.filter((p) => {
+    const catMatch = filter === 'Todos' || p.category === filter;
+    const statusMatch = status === 'Todos' || p.status === status;
     return catMatch && statusMatch;
   });
 
   return (
-    <section id="proyectos" className="py-32 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+    <section id="proyectos" className="py-24 md:py-36 bg-[#1a1a1a]">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
         >
-          <p className="text-sm tracking-[0.4em] uppercase text-muted mb-4">
-            Proyectos
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+            Portfolio
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight max-w-xl">
-            Nuestro trabajo
-          </h2>
-        </motion.div>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <h2 className="font-editorial text-[clamp(2rem,4vw,3.5rem)] text-white leading-[1.1]">
+              Proyectos<br />
+              <span className="italic text-[#c4b8a8]">seleccionados.</span>
+            </h2>
 
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 flex flex-col sm:flex-row gap-6"
-        >
-          {/* Category filters */}
-          <div className="flex gap-2">
-            <span className="text-xs tracking-[0.2em] uppercase text-muted self-center mr-2">Tipo:</span>
-            {categoryFilters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveCategory(filter)}
-                className={`px-4 py-2 text-sm tracking-wide transition-colors ${
-                  activeCategory === filter
-                    ? "bg-foreground text-white"
-                    : "bg-surface text-muted hover:text-foreground"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-
-          {/* Status filters */}
-          <div className="flex gap-2">
-            <span className="text-xs tracking-[0.2em] uppercase text-muted self-center mr-2">Estado:</span>
-            {statusFilters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveStatus(filter)}
-                className={`px-4 py-2 text-sm tracking-wide transition-colors ${
-                  activeStatus === filter
-                    ? "bg-foreground text-white"
-                    : "bg-surface text-muted hover:text-foreground"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex gap-2">
+                {(['Todos', 'Comercial', 'Residencial'] as FilterType[]).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={`text-[11px] uppercase tracking-[0.15em] px-4 py-2 border transition-all duration-300 ${
+                      filter === f
+                        ? 'border-[#8b7355] text-[#8b7355]'
+                        : 'border-white/15 text-white/40 hover:text-white/70'
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                {(['Todos', 'En Ejecucion', 'Entregada'] as StatusType[]).map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setStatus(s)}
+                    className={`text-[11px] uppercase tracking-[0.15em] px-4 py-2 border transition-all duration-300 ${
+                      status === s
+                        ? 'border-[#8b7355] text-[#8b7355]'
+                        : 'border-white/15 text-white/40 hover:text-white/70'
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        {/* Project Grid */}
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
+        <div className="grid md:grid-cols-2 gap-4">
+          {filtered.map((proyecto, i) => (
             <motion.div
-              key={project.title}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, delay: 0.05 * i }}
-              className="group relative aspect-[4/3] bg-surface overflow-hidden cursor-pointer"
+              key={proyecto.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
+              className="group relative aspect-[4/3] overflow-hidden cursor-pointer"
             >
-              {/* Placeholder gradient background — replace with drone shots */}
-              <div
-                className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                style={{
-                  background: `linear-gradient(135deg, #e5e5e5 0%, #d4d4d4 50%, #a3a3a3 100%)`,
-                }}
+              <Image
+                src={proyecto.image}
+                alt={proyecto.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500" />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300 flex items-end">
-                <div className="p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-xs tracking-[0.2em] uppercase text-white/70">
-                    {project.category}
-                  </p>
-                  <h3 className="text-lg font-semibold text-white mt-1">
-                    {project.title}
-                  </h3>
-                  <div className="flex gap-4 mt-2 text-sm text-white/70">
-                    <span>{project.area}</span>
-                    <span>{project.location}</span>
-                  </div>
-                </div>
+              <div className="absolute top-4 right-4">
+                <span className={`text-[10px] uppercase tracking-[0.15em] px-3 py-1 ${
+                  proyecto.status === 'En Ejecucion'
+                    ? 'bg-[#8b7355] text-white'
+                    : 'bg-white/90 text-[#1a1a1a]'
+                }`}>
+                  {proyecto.status}
+                </span>
               </div>
 
-              {/* Labels */}
-              <div className="absolute top-4 left-4 flex gap-2">
-                <span className="text-xs tracking-wide bg-white/90 px-3 py-1">
-                  {project.category}
-                </span>
-                <span
-                  className={`text-xs tracking-wide px-3 py-1 ${
-                    project.status === "En Ejecución"
-                      ? "bg-amber-100 text-amber-800"
-                      : "bg-green-100 text-green-800"
-                  }`}
-                >
-                  {project.status}
-                </span>
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="text-white/60 text-[11px] uppercase tracking-[0.2em] mb-1">
+                  {proyecto.category} &mdash; {proyecto.area}
+                </p>
+                <h3 className="font-editorial text-white text-2xl md:text-3xl">
+                  {proyecto.title}
+                </h3>
+                <p className="text-white/50 text-[13px] mt-1">
+                  {proyecto.location}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {filtered.length === 0 && (
-          <p className="mt-12 text-center text-muted">
-            No hay proyectos que coincidan con los filtros seleccionados.
-          </p>
-        )}
       </div>
     </section>
   );
