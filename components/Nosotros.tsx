@@ -96,8 +96,8 @@ export default function Nosotros() {
       <FadeIn className="mt-24">
         <div className="relative w-full h-[50vh] md:h-[70vh] img-zoom">
           <Image
-            src="/images/oficina-efe.png"
-            alt="Oficina Efe Constructora"
+            src="/images/interior-residencial.png"
+            alt="Interior residencial diseñado por Efe Constructora"
             fill
             className="object-cover"
             sizes="100vw"
@@ -141,6 +141,39 @@ export default function Nosotros() {
               obra.
             </p>
             <div className="w-16 h-[1px] bg-[#8b7355] mt-8" />
+          </FadeIn>
+        </div>
+
+        {/* Engineer placeholder */}
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center mt-20">
+          <FadeIn delay={0.1}>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+              Co-Fundador
+            </p>
+            <h3 className="font-editorial text-3xl md:text-4xl text-[#1a1a1a] mb-6">
+              Ing. <span className="italic">Proximamente</span>
+            </h3>
+            <p className="text-[#4a4a4a] leading-relaxed text-[15px]">
+              Rigor tecnico y gestion de proyectos que garantizan
+              ejecucion impecable. Especialista en estructuras,
+              presupuestos y cumplimiento de plazos.
+            </p>
+            <div className="w-16 h-[1px] bg-[#8b7355] mt-8" />
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="relative aspect-[4/5] w-full max-w-md bg-[#ece6de] flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-4 border border-[#d4cdc4] rounded-full flex items-center justify-center">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c4b8a8" strokeWidth="1">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <p className="text-[#c4b8a8] text-[12px] uppercase tracking-[0.2em]">
+                  Perfil proximamente
+                </p>
+              </div>
+            </div>
           </FadeIn>
         </div>
       </div>
