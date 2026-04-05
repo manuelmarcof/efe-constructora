@@ -41,7 +41,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <a href="#" className={`${textColor} transition-colors duration-500`}>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-6">
                 <span className="text-3xl md:text-4xl font-light tracking-[-0.05em] font-editorial">
                   efe
                 </span>

@@ -20,7 +20,7 @@
   --color-stone: #c4b8a8;
   --color-concrete: #b5afa6;
   --font-sans: var(--font-geist-sans);
-  --font-editorial: 'Georgia', 'Times New Roman', serif;
+  --font-editorial: var(--font-cormorant), 'Georgia', 'Times New Roman', serif;
 }
 
 html {

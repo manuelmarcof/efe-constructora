@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Cormorant_Garamond } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
@@ -8,6 +8,13 @@ const SITE_URL = "https://efeconstructora.com.py";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -97,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} antialiased`}>
+    <html lang="es" className={`${geistSans.variable} ${cormorant.variable} antialiased`}>
       <body>
         <JsonLd />
         {children}
