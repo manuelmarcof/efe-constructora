@@ -109,7 +109,7 @@ export default function JsonLd() {
                 "@type": "Service",
                 name: "Reformas de Viviendas",
                 description:
-                  "Reforma integral de viviendas — transformacion de espacios segregados en hogares funcionales con iluminacion natural y ventilacion.",
+                  "Reforma integral de viviendas.transformacion de espacios segregados en hogares funcionales con iluminacion natural y ventilacion.",
               },
             },
             {

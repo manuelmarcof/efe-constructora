@@ -9,7 +9,7 @@ export default function Contacto() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="contacto" className="py-24 md:py-36 bg-[#f5f0eb]" ref={ref}>
+    <section id="contacto" className="py-28 md:py-40 bg-[#f5f0eb]" ref={ref}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24">
           {/* Left — info */}
@@ -83,10 +83,10 @@ export default function Contacto() {
                 <label className="text-[11px] uppercase tracking-[0.2em] text-[#8a8a8a] block mb-2">Tipo de Proyecto</label>
                 <select className="w-full bg-transparent border-b border-[#d4cdc4] py-3 text-[#1a1a1a] text-[15px] focus:outline-none focus:border-[#8b7355] transition-colors">
                   <option value="">Seleccionar...</option>
-                  <option value="residencial">Residencial</option>
+                  <option value="construccion">Construccion desde Cero</option>
+                  <option value="reforma">Reforma de Vivienda</option>
+                  <option value="interiores">Diseño de Interiores</option>
                   <option value="comercial">Comercial</option>
-                  <option value="industrial">Industrial</option>
-                  <option value="remodelacion">Remodelacion</option>
                   <option value="llave-en-mano">Obra Llave en Mano</option>
                 </select>
               </div>

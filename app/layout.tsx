@@ -61,7 +61,7 @@ export const metadata: Metadata = {
         url: "/images/mockup-web.png",
         width: 1200,
         height: 630,
-        alt: "Efe Constructora — Arquitectura e Ingenieria en Paraguay",
+        alt: "Efe Constructora - Arquitectura e Ingenieria en Paraguay",
       },
     ],
   },

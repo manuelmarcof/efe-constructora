@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Efe Constructora — Arquitectura e Ingenieria",
+    name: "Efe Constructora - Arquitectura e Ingenieria",
     short_name: "Efe Constructora",
     description:
       "Construccion desde cero, reformas, diseño de interiores y obras llave en mano en Asuncion, Paraguay.",

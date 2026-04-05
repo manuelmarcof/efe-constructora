@@ -28,11 +28,11 @@ const stats = [
 
 export default function Nosotros() {
   return (
-    <section id="nosotros" className="py-24 md:py-36 bg-[#faf7f3]">
+    <section id="nosotros" className="py-28 md:py-40 bg-[#faf7f3]">
       {/* Mission / Vision */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <FadeIn>
-          <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+          <p className="text-[11px] uppercase tracking-[0.4em] text-[#8b7355] mb-4">
             Sobre Nosotros
           </p>
         </FadeIn>
@@ -120,7 +120,7 @@ export default function Nosotros() {
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-[#8b7355] mb-4">
               Fundadora
             </p>
             <h3 className="font-editorial text-3xl md:text-4xl text-[#1a1a1a] mb-6">
@@ -136,8 +136,8 @@ export default function Nosotros() {
             </p>
             <p className="text-[#4a4a4a] leading-relaxed text-[15px]">
               Con experiencia como residente de obra y disenadora,
-              combina la vision artistica con la rigurosidad tecnica
-              — una profesional que entiende tanto el plano como la
+              combina la vision artistica con la rigurosidad tecnica.
+              Una profesional que entiende tanto el plano como la
               obra.
             </p>
             <div className="w-16 h-[1px] bg-[#8b7355] mt-8" />
@@ -147,7 +147,7 @@ export default function Nosotros() {
         {/* Engineer placeholder */}
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center mt-20">
           <FadeIn delay={0.1}>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-[#8b7355] mb-4">
               Co-Fundador
             </p>
             <h3 className="font-editorial text-3xl md:text-4xl text-[#1a1a1a] mb-6">

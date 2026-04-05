@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-4 gap-12 md:gap-8">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-4 mb-4">
               <span className="text-3xl font-light tracking-[-0.05em] font-editorial text-white">efe</span>
               <div className="flex flex-col text-[7px] uppercase tracking-[0.2em] leading-tight text-white/40">
                 <span>cons</span>
@@ -31,7 +31,7 @@ export default function Footer() {
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-[#8b7355] mb-4">Servicios</p>
             <div className="flex flex-col gap-3">
-              {['Diseño Arquitectonico', 'Construccion Comercial', 'Construccion Residencial', 'Obra Llave en Mano'].map((s) => (
+              {['Construccion desde Cero', 'Reformas de Viviendas', 'Diseño de Interiores', 'Obra Llave en Mano'].map((s) => (
                 <span key={s} className="text-white/50 text-[13px]">{s}</span>
               ))}
             </div>

@@ -7,26 +7,26 @@ import Image from 'next/image';
 const servicios = [
   {
     number: '01',
-    title: 'Diseño Arquitectonico',
-    desc: 'Proyectos con versatilidad, funcionalidad y belleza. Desde el concepto hasta el proyecto ejecutivo, cada detalle es pensado.',
-    image: '/images/proyectos-collage.png',
+    title: 'Construccion desde Cero',
+    desc: 'Viviendas, edificios comerciales y proyectos a medida. Desde los cimientos hasta la entrega, con atencion al detalle en cada etapa.',
+    image: '/images/casa-moderna.png',
   },
   {
     number: '02',
-    title: 'Construccion Comercial',
-    desc: 'Supermercados, oficinas, locales comerciales. Obras entregadas con rapidez y calidad impecable.',
-    image: '/images/supermercado.png',
+    title: 'Reformas de Viviendas',
+    desc: 'Transformamos espacios segregados en hogares funcionales. Mejoramos iluminacion natural, ventilacion y flujo entre ambientes.',
+    image: '/images/interior-residencial.png',
   },
   {
     number: '03',
-    title: 'Construccion Residencial',
-    desc: 'Casas y edificios que se viven. Atencion al detalle en cada terminacion, materiales nobles y espacios que inspiran.',
-    image: '/images/casa-moderna.png',
+    title: 'Diseño de Interiores',
+    desc: 'Interiores que combinan estetica y funcionalidad. Cada espacio pensado para conectar con las personas y su forma de habitar.',
+    image: '/images/oficina-efe.png',
   },
   {
     number: '04',
     title: 'Obra Llave en Mano',
-    desc: 'Gestion integral desde la seleccion del terreno hasta la entrega final. Un unico punto de responsabilidad — sin intermediarios.',
+    desc: 'Gestion integral desde la seleccion del terreno hasta la entrega final. Un unico punto de responsabilidad, sin intermediarios.',
     image: '/images/lobby-corporativo.png',
     featured: true,
   },
@@ -37,14 +37,14 @@ export default function Servicios() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="servicios" className="py-24 md:py-36 bg-[#f5f0eb]">
+    <section id="servicios" className="py-28 md:py-40 bg-[#f5f0eb]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
         >
-          <p className="text-[11px] uppercase tracking-[0.3em] text-[#8b7355] mb-4">
+          <p className="text-[11px] uppercase tracking-[0.4em] text-[#8b7355] mb-4">
             Servicios
           </p>
           <h2 className="font-editorial text-[clamp(2rem,4vw,3.5rem)] text-[#1a1a1a] leading-[1.1] mb-16">
@@ -58,7 +58,7 @@ export default function Servicios() {
               key={servicio.number}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
+              transition={{ duration: 0.6, delay: 0.15 * i + 0.4 }}
               className={`group grid md:grid-cols-[100px_1fr_1fr] gap-6 md:gap-12 py-10 border-t border-[#d4cdc4] items-start ${
                 servicio.featured ? 'bg-[#1a1a1a] -mx-6 md:-mx-12 px-6 md:px-12 border-t-0' : ''
               }`}
@@ -87,6 +87,7 @@ export default function Servicios() {
                 </p>
               </div>
 
+              {/* Image loads with no delay */}
               <div className="relative aspect-[3/2] overflow-hidden img-zoom hidden md:block">
                 <Image
                   src={servicio.image}
