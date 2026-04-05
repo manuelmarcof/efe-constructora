@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import EfeLogo from './EfeLogo';
+/* eslint-disable @next/next/no-img-element */
 
 const navLinks = [
   { name: 'Proyectos', href: '#proyectos' },
@@ -41,15 +41,14 @@ export default function Header() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
-            <a href="#" className={`${textColor} transition-colors duration-500`}>
-              <div className="flex items-center gap-5">
-                <EfeLogo height={28} className="md:h-[34px]" />
-                <div className="hidden md:flex flex-col text-[7px] uppercase tracking-[0.2em] leading-tight opacity-60">
-                  <span>cons</span>
-                  <span>truc</span>
-                  <span>tora</span>
-                </div>
-              </div>
+            <a href="#" className="transition-all duration-500">
+              <img
+                src="/images/efe-logo.png"
+                alt="Efe Constructora"
+                className={`h-14 md:h-20 w-auto object-contain transition-all duration-500 ${
+                  scrolled ? '' : 'invert'
+                }`}
+              />
             </a>
 
             {/* Desktop nav */}

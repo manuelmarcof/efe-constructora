@@ -1,6 +1,6 @@
 'use client';
 
-import EfeLogo from './EfeLogo';
+/* eslint-disable @next/next/no-img-element */
 
 export default function Footer() {
   return (
@@ -8,13 +8,12 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-4 gap-12 md:gap-8">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-5 mb-4">
-              <EfeLogo height={28} className="text-white" />
-              <div className="flex flex-col text-[7px] uppercase tracking-[0.2em] leading-tight text-white/40">
-                <span>cons</span>
-                <span>truc</span>
-                <span>tora</span>
-              </div>
+            <div className="mb-4">
+              <img
+                src="/images/efe-logo.png"
+                alt="Efe Constructora"
+                className="h-16 w-auto object-contain invert"
+              />
             </div>
             <p className="text-white/40 text-[13px] leading-relaxed">
               Arquitectura e ingenieria<br />sin compromisos.
