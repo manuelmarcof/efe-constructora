@@ -1,13 +1,15 @@
 'use client';
 
+import EfeLogo from './EfeLogo';
+
 export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] py-16 md:py-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-4 gap-12 md:gap-8">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-6 mb-4">
-              <span className="text-3xl font-light tracking-[-0.05em] font-editorial text-white">efe</span>
+            <div className="flex items-center gap-5 mb-4">
+              <EfeLogo height={28} className="text-white" />
               <div className="flex flex-col text-[7px] uppercase tracking-[0.2em] leading-tight text-white/40">
                 <span>cons</span>
                 <span>truc</span>

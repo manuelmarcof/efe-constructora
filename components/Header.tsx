@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import EfeLogo from './EfeLogo';
 
 const navLinks = [
   { name: 'Proyectos', href: '#proyectos' },
@@ -41,10 +42,8 @@ export default function Header() {
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <a href="#" className={`${textColor} transition-colors duration-500`}>
-              <div className="flex items-center gap-6">
-                <span className="text-3xl md:text-4xl font-light tracking-[-0.05em] font-editorial">
-                  efe
-                </span>
+              <div className="flex items-center gap-5">
+                <EfeLogo height={28} className="md:h-[34px]" />
                 <div className="hidden md:flex flex-col text-[7px] uppercase tracking-[0.2em] leading-tight opacity-60">
                   <span>cons</span>
                   <span>truc</span>
